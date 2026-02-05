@@ -13,26 +13,26 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BrightSmile Dental | Premier Dental Care in Seattle, WA",
+  title: "Bright Smile Dental | Premier Dental Care",
   description:
-    "BrightSmile Dental offers comprehensive dental care in Seattle, WA. From general dentistry to cosmetic procedures, our experienced team provides personalized care in a comfortable environment. Book your appointment today!",
+    "Professional dental care for the whole family. From general dentistry to cosmetic procedures, our experienced team provides personalized care in a comfortable environment. Book your appointment today!",
   keywords: [
-    "dentist Seattle",
-    "dental clinic Seattle WA",
+    "dentist",
+    "dental clinic",
     "cosmetic dentistry",
     "teeth whitening",
     "dental implants",
     "orthodontics",
     "emergency dental care",
-    "BrightSmile Dental",
+    "Bright Smile Dental",
   ],
-  authors: [{ name: "BrightSmile Dental" }],
+  authors: [{ name: "Bright Smile Dental" }],
   openGraph: {
-    title: "BrightSmile Dental | Your Smile, Our Priority",
+    title: "Bright Smile Dental | Professional Dental Care",
     description:
-      "Experience modern dental care at BrightSmile Dental in Seattle, WA. Our team of experienced dentists provides general, cosmetic, and emergency dental services.",
-    url: "https://brightsmile-dental.com",
-    siteName: "BrightSmile Dental",
+      "Professional dental care for the whole family. Our team of experienced dentists provides general, cosmetic, and emergency dental services.",
+    url: "https://dental-clinic-landing.vercel.app",
+    siteName: "Bright Smile Dental",
     locale: "en_US",
     type: "website",
     images: [
@@ -40,15 +40,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "BrightSmile Dental - Premier Dental Care in Seattle",
+        alt: "Bright Smile Dental - Professional Dental Care",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BrightSmile Dental | Premier Dental Care in Seattle, WA",
+    title: "Bright Smile Dental | Professional Dental Care",
     description:
-      "Experience modern dental care at BrightSmile Dental. Book your appointment today!",
+      "Professional dental care for the whole family. Book your appointment today!",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     follow: true,
   },
   alternates: {
-    canonical: "https://brightsmile-dental.com",
+    canonical: "https://dental-clinic-landing.vercel.app",
   },
 };
 
@@ -65,8 +65,43 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    name: "Bright Smile Dental",
+    description: "Professional dental care for the whole family",
+    url: "https://dental-clinic-landing.vercel.app",
+    telephone: "+1-555-DENTAL",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Your City",
+      addressRegion: "WA",
+    },
+    priceRange: "$$",
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+        ],
+        opens: "08:00",
+        closes: "17:00",
+      },
+    ],
+  };
+
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
