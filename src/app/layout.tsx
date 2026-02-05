@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Bright Smile Dental | Premier Dental Care",
   description:
-    "Professional dental care for the whole family. From general dentistry to cosmetic procedures, our experienced team provides personalized care in a comfortable environment. Book your appointment today!",
+    "Professional dental care for the whole family. General, cosmetic, and emergency dentistry by our experienced team. Book your appointment today!",
   keywords: [
     "dentist",
     "dental clinic",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Bright Smile Dental - Professional Dental Care",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Bright Smile Dental | Professional Dental Care",
     description:
       "Professional dental care for the whole family. Book your appointment today!",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -67,7 +67,7 @@ export default function RootLayout({
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Dentist",
+    "@type": "LocalBusiness",
     name: "Bright Smile Dental",
     description: "Professional dental care for the whole family",
     url: "https://dental-clinic-landing.vercel.app",
@@ -96,16 +96,14 @@ export default function RootLayout({
 
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );
